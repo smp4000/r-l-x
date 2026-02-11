@@ -31,4 +31,23 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | AI Services (Uhrenverwaltung)
+    |--------------------------------------------------------------------------
+    */
+
+    'perplexity' => [
+        'api_key' => env('PERPLEXITY_API_KEY'),
+    ],
+
+    'openai' => [
+        'api_key' => env('OPENAI_API_KEY'),
+    ],
+
+    'google' => [
+        'search_api_key' => env('GOOGLE_SEARCH_API_KEY'),
+        'search_engine_id' => env('GOOGLE_SEARCH_ENGINE_ID'),
+    ],
+
 ];
