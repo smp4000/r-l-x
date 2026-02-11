@@ -8,6 +8,21 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 
 ## [Unreleased]
 
+### 🐛 Behoben
+
+**Filament 5 Kompatibilität:**
+- 🔧 WatchResource vollständig implementiert mit 5-Tab-Interface (Grunddaten, Preise & Marktdaten, Technische Details, Dokumentation, Notizen & Historie)
+- 🔧 Alle Layout-Komponenten (Section, Tabs) korrekt zu `Filament\Schemas\Components` migriert
+- 🔧 Actions-Namespace von `Filament\Tables\Actions` zu `Filament\Actions` aktualisiert
+- 🔧 Dealer-Relationships zu Watch-Model hinzugefügt (`purchaseDealer`, `sellingDealer`) inkl. eigener Migration
+
+**ApiSettingsPage Korrekturen:**
+- 🔧 `InteractsWithForms` Trait korrekt implementiert
+- 🔧 `form(Schema $schema): Schema` Methodensignatur korrigiert (statt `Form $form`)
+- 🔧 Section-Import korrigiert: `Filament\Schemas\Components\Section` (nicht `Forms\Components`)
+- 🔧 Blade-Template vereinfacht: Direkter `<x-filament::button>` statt nicht-existierender `form.actions` Komponente
+- 🔧 Standard Form-Pattern mit `$this->form->fill()` und `$this->form->getState()`
+
 ---
 
 ## [0.1.0] - 2026-02-11
