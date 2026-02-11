@@ -4,10 +4,10 @@ namespace App\Filament\Pages;
 
 use App\Models\UserApiSetting;
 use BackedEnum;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use UnitEnum;
@@ -19,6 +19,8 @@ use UnitEnum;
  */
 class ApiSettingsPage extends Page
 {
+    use InteractsWithSchemas;
+
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-key';
 
     protected string $view = 'filament.pages.api-settings-page';
@@ -37,11 +39,13 @@ class ApiSettingsPage extends Page
     {
         $settings = auth()->user()->apiSettings;
 
-        $this->form->fill([
-            'perplexity_api_key' => $settings?->perplexity_api_key,
-            'openai_api_key' => $settings?->openai_api_key,
-            'google_search_api_key' => $settings?->google_search_api_key,
-            'google_search_engine_id' => $settings?->google_search_engine_id,
+        $this->fillSchemas([
+            'form' => [
+                'perplexity_api_key' => $settings?->perplexity_api_key,
+                'openai_api_key' => $settings?->openai_api_key,
+                'google_search_api_key' => $settings?->google_search_api_key,
+                'google_search_engine_id' => $settings?->google_search_engine_id,
+            ],
         ]);
     }
 
@@ -98,7 +102,7 @@ class ApiSettingsPage extends Page
 
     public function save(): void
     {
-        $data = $this->form->getState();
+        $data = $this->getSchemaState('form');
 
         $settings = auth()->user()->apiSettings()->firstOrNew([
             'user_id' => auth()->id(),

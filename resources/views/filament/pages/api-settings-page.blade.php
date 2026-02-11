@@ -1,9 +1,9 @@
 <x-filament-panels::page>
-    <form wire:submit="save">
-        {{ $this->form }}
+    <x-filament-schemas::form wire:submit="save">
+        {{ $this->schema('form') }}
 
-        <div class="mt-6">
+        <x-slot name="actions">
             {{ $this->getFormActions() }}
-        </div>
-    </form>
+        </x-slot>
+    </x-filament-schemas::form>
 </x-filament-panels::page>
