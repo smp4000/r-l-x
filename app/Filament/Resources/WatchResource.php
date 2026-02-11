@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Dealer;
 use BackedEnum;
 use Filament\Forms;
+use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -37,10 +38,10 @@ class WatchResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Tabs::make('Uhr Details')
+                Schemas\Components\Tabs::make('Uhr Details')
                     ->tabs([
                         // TAB 1: Grunddaten
-                        Forms\Components\Tabs\Tab::make('Grunddaten')
+                        Schemas\Components\Tabs\Tab::make('Grunddaten')
                             ->schema([
                                 Forms\Components\Select::make('brand_id')
                                     ->label('Marke')
@@ -93,7 +94,7 @@ class WatchResource extends Resource
                             ]),
 
                         // TAB 2: Preise & Werte
-                        Forms\Components\Tabs\Tab::make('Preise')
+                        Schemas\Components\Tabs\Tab::make('Preise')
                             ->schema([
                                 Forms\Components\TextInput::make('purchase_price')
                                     ->label('Kaufpreis (€)')
@@ -134,7 +135,7 @@ class WatchResource extends Resource
                             ]),
 
                         // TAB 3: Technische Details
-                        Forms\Components\Tabs\Tab::make('Technische Details')
+                        Schemas\Components\Tabs\Tab::make('Technische Details')
                             ->schema([
                                 Forms\Components\Select::make('case_material')
                                     ->label('Gehäusematerial')
@@ -196,7 +197,7 @@ class WatchResource extends Resource
                             ]),
 
                         // TAB 4: Dokumentation
-                        Forms\Components\Tabs\Tab::make('Dokumentation')
+                        Schemas\Components\Tabs\Tab::make('Dokumentation')
                             ->schema([
                                 Forms\Components\Toggle::make('has_box')
                                     ->label('Box vorhanden'),
@@ -214,7 +215,7 @@ class WatchResource extends Resource
                             ]),
 
                         // TAB 5: Notizen
-                        Forms\Components\Tabs\Tab::make('Notizen')
+                        Schemas\Components\Tabs\Tab::make('Notizen')
                             ->schema([
                                 Forms\Components\Textarea::make('notes')
                                     ->label('Notizen')

@@ -7,6 +7,7 @@ use App\Models\Dealer;
 use BackedEnum;
 use Filament\Actions;
 use Filament\Forms;
+use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -37,7 +38,7 @@ class DealerResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Kontaktinformationen')
+                Schemas\Components\Section::make('Kontaktinformationen')
                     ->schema([
                         Forms\Components\TextInput::make('company_name')
                             ->label('Firmenname')
