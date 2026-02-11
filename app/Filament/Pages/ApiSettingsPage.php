@@ -52,19 +52,17 @@ class ApiSettingsPage extends Page
                 Section::make('KI für Datenabfrage & Marktwerte')
                     ->description('Mindestens einen der folgenden API-Keys konfigurieren. **Perplexity** wird bevorzugt (hat Web-Zugriff), OpenAI dient als Fallback.')
                     ->schema([
-                        Textarea::make('perplexity_api_key')
+                        TextInput::make('perplexity_api_key')
                             ->label('Perplexity AI API Key')
                             ->placeholder('pplx-...')
-                            ->rows(3)
                             ->helperText('🌐 **Empfohlen:** Hat Zugriff auf aktuelle Web-Daten für Marktpreise und technische Details. [API Key beantragen](https://www.perplexity.ai/settings/api)')
                             ->password()
                             ->revealable()
                             ->columnSpanFull(),
 
-                        Textarea::make('openai_api_key')
+                        TextInput::make('openai_api_key')
                             ->label('OpenAI API Key (Fallback)')
                             ->placeholder('sk-...')
-                            ->rows(3)
                             ->helperText('⚠️ Fallback-Option: Basiert nur auf Training-Daten (keine aktuelle Web-Suche). [API Key erstellen](https://platform.openai.com/api-keys)')
                             ->password()
                             ->revealable()
@@ -76,10 +74,9 @@ class ApiSettingsPage extends Page
                 Section::make('Google Custom Search für Bildsuche')
                     ->description('Optional: Für automatische Bildsuche wenn Perplexity keine Bilder liefert.')
                     ->schema([
-                        Textarea::make('google_search_api_key')
+                        TextInput::make('google_search_api_key')
                             ->label('Google Custom Search API Key')
                             ->placeholder('AIza...')
-                            ->rows(3)
                             ->helperText('[API Key erstellen](https://console.cloud.google.com/apis/credentials)')
                             ->password()
                             ->revealable()
