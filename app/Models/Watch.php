@@ -60,12 +60,14 @@ class Watch extends Model
         'purchase_price',
         'purchase_date',
         'purchase_location',
+        'purchase_dealer_id',
         'condition',
         'box_available',
         'papers_available',
         'sold_at',
         'sold_price',
         'sold_to_dealer_id',
+        'selling_dealer_id',
         'sold_notes',
         'insurance_company',
         'insurance_policy_number',
@@ -127,7 +129,23 @@ class Watch extends Model
     }
 
     /**
+     * Relationship: Gekauft von (Händler)
+     */
+    public function purchaseDealer(): BelongsTo
+    {
+        return $this->belongsTo(Dealer::class, 'purchase_dealer_id');
+    }
+
+    /**
      * Relationship: Verkauft an (Händler)
+     */
+    public function sellingDealer(): BelongsTo
+    {
+        return $this->belongsTo(Dealer::class, 'selling_dealer_id');
+    }
+
+    /**
+     * Relationship: Verkauft an (Dealer - Legacy)
      */
     public function soldToDealer(): BelongsTo
     {
