@@ -87,11 +87,16 @@ class WatchResource extends Resource
                                         'vintage' => 'Vintage',
                                     ]),
 
-                                Forms\Components\TextInput::make('year')
-                                    ->label('Baujahr')
-                                    ->numeric()
-                                    ->minValue(1800)
-                                    ->maxValue(date('Y')),
+                                Forms\Components\Select::make('condition')
+                                    ->label('Zustand')
+                                    ->options([
+                                        'neu' => 'Neu',
+                                        'ungetragen' => 'Ungetragen',
+                                        'getragen' => 'Getragen',
+                                        'stark_getragen' => 'Stark getragen',
+                                    ])
+                                    ->default('getragen')
+                                    ->required(),
                             ]),
 
                         // TAB 2: Preise & Werte
@@ -186,11 +191,6 @@ class WatchResource extends Resource
                                 Forms\Components\TextInput::make('bracelet_material')
                                     ->label('Armbandmaterial')
                                     ->maxLength(100),
-
-                                Forms\Components\Textarea::make('complications')
-                                    ->label('Komplikationen')
-                                    ->maxLength(500)
-                                    ->rows(3),
 
                                 Forms\Components\TextInput::make('water_resistance')
                                     ->label('Wasserdichtigkeit')
