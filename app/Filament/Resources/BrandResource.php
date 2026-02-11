@@ -7,6 +7,7 @@ use App\Models\Brand;
 use BackedEnum;
 use Filament\Actions;
 use Filament\Forms;
+use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;

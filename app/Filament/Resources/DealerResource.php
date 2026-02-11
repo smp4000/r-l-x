@@ -88,7 +88,7 @@ class DealerResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make('Adresse')
+                Schemas\Components\Section::make('Adresse')
                     ->schema([
                         Forms\Components\TextInput::make('street')
                             ->label('Straße')
@@ -122,7 +122,7 @@ class DealerResource extends Resource
                     ->columns(3)
                     ->collapsible(),
 
-                Forms\Components\Section::make('Typ & Eigenschaften')
+                Schemas\Components\Section::make('Typ & Eigenschaften')
                     ->schema([
                         Forms\Components\Select::make('contact_type')
                             ->label('Kontakttyp')
@@ -148,7 +148,7 @@ class DealerResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make('CRM')
+                Schemas\Components\Section::make('CRM')
                     ->schema([
                         Forms\Components\TagsInput::make('tags')
                             ->label('Tags')
