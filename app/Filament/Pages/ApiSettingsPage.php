@@ -115,14 +115,4 @@ class ApiSettingsPage extends Page
             ->body('Ihre API-Keys wurden erfolgreich aktualisiert.')
             ->send();
     }
-
-    protected function getCachedFormActions(): array
-    {
-        return [
-            \Filament\Actions\Action::make('save')
-                ->label('Speichern')
-                ->submit('save')
-                ->icon('heroicon-o-check'),
-        ];
-    }
 }

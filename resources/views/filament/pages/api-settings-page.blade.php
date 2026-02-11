@@ -2,6 +2,10 @@
     <form wire:submit="save">
         {{ $this->form }}
 
-        <x-filament-panels::form.actions :actions="$this->getCachedFormActions()" />
+        <div class="mt-6">
+            <x-filament::button type="submit" icon="heroicon-o-check">
+                Speichern
+            </x-filament::button>
+        </div>
     </form>
 </x-filament-panels::page>
