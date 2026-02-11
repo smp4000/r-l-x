@@ -1,9 +1,7 @@
 <x-filament-panels::page>
-    <x-filament-schemas::form wire:submit="save">
-        {{ $this->schema('form') }}
+    <form wire:submit="save">
+        {{ $this->form }}
 
-        <x-slot name="actions">
-            {{ $this->getFormActions() }}
-        </x-slot>
-    </x-filament-schemas::form>
+        <x-filament-panels::form.actions :actions="$this->getCachedFormActions()" />
+    </form>
 </x-filament-panels::page>

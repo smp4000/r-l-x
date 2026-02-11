@@ -5,9 +5,9 @@ namespace App\Filament\Pages;
 use App\Models\UserApiSetting;
 use BackedEnum;
 use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
-use Filament\Schemas\Concerns\InteractsWithSchemas;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Form;
+use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use UnitEnum;
@@ -19,7 +19,7 @@ use UnitEnum;
  */
 class ApiSettingsPage extends Page
 {
-    use InteractsWithSchemas;
+    use InteractsWithForms;
 
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-key';
 
@@ -39,19 +39,17 @@ class ApiSettingsPage extends Page
     {
         $settings = auth()->user()->apiSettings;
 
-        $this->fillSchemas([
-            'form' => [
-                'perplexity_api_key' => $settings?->perplexity_api_key,
-                'openai_api_key' => $settings?->openai_api_key,
-                'google_search_api_key' => $settings?->google_search_api_key,
-                'google_search_engine_id' => $settings?->google_search_engine_id,
-            ],
+        $this->form->fill([
+            'perplexity_api_key' => $settings?->perplexity_api_key,
+            'openai_api_key' => $settings?->openai_api_key,
+            'google_search_api_key' => $settings?->google_search_api_key,
+            'google_search_engine_id' => $settings?->google_search_engine_id,
         ]);
     }
 
-    public function form(Schema $schema): Schema
+    public function form(Form $form): Form
     {
-        return $schema
+        return $form
             ->schema([
                 Section::make('KI für Datenabfrage & Marktwerte')
                     ->description('Mindestens einen der folgenden API-Keys konfigurieren. **Perplexity** wird bevorzugt (hat Web-Zugriff), OpenAI dient als Fallback.')
@@ -102,7 +100,7 @@ class ApiSettingsPage extends Page
 
     public function save(): void
     {
-        $data = $this->getSchemaState('form');
+        $data = $this->form->getState();
 
         $settings = auth()->user()->apiSettings()->firstOrNew([
             'user_id' => auth()->id(),
@@ -118,7 +116,7 @@ class ApiSettingsPage extends Page
             ->send();
     }
 
-    protected function getFormActions(): array
+    protected function getCachedFormActions(): array
     {
         return [
             \Filament\Actions\Action::make('save')
