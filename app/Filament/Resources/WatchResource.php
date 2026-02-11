@@ -228,12 +228,6 @@ class WatchResource extends Resource
                                     ->maxLength(2000)
                                     ->rows(5)
                                     ->disabled(),
-
-                                Forms\Components\Textarea::make('market_trend')
-                                    ->label('Markttrend (AI)')
-                                    ->maxLength(1000)
-                                    ->rows(4)
-                                    ->disabled(),
                             ]),
                     ])
                     ->columnSpanFull(),
