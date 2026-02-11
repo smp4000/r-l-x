@@ -6,7 +6,7 @@ use App\Models\UserApiSetting;
 use BackedEnum;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -47,9 +47,9 @@ class ApiSettingsPage extends Page
         ]);
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Section::make('KI für Datenabfrage & Marktwerte')
                     ->description('Mindestens einen der folgenden API-Keys konfigurieren. **Perplexity** wird bevorzugt (hat Web-Zugriff), OpenAI dient als Fallback.')
