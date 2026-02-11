@@ -92,20 +92,6 @@ class ApiSettingsPage extends Page
                     ])
                     ->collapsible()
                     ->collapsed(true),
-
-                Section::make('ℹ️ Hinweise')
-                    ->schema([
-                        TextInput::make('info')
-                            ->label('')
-                            ->disabled()
-                            ->default('✓ Alle Keys werden verschlüsselt gespeichert
-✓ Keys sind nur für Ihren Account sichtbar
-✓ Sie können die Keys jederzeit ändern oder löschen')
-                            ->columnSpanFull()
-                            ->hiddenLabel(),
-                    ])
-                    ->collapsible()
-                    ->collapsed(true),
             ])
             ->statePath('data');
     }
